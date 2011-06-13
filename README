@@ -1,0 +1,1 @@
+copy mongoid_example.yml and config_example.yml to mongoid.yml and config.yml and modify them as necessary.

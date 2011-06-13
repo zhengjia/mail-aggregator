@@ -1,0 +1,6 @@
+server_type: pop3
+server: pop3.live.com
+port: 995
+user_name: your_user_name@live.com
+password: your_password
+enable_ssl: true
