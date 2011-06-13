@@ -1,6 +1,7 @@
 source 'http://rubygems.org'
 
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
+gem 'mail'
 gem 'mongoid', :git => 'git://github.com/mongoid/mongoid.git'
 gem 'bson_ext'
 gem 'fabrication'
