@@ -1,3 +1,4 @@
-config.yml
+server.yml
 mongoid.yml
+subjects.yml
 coverage/

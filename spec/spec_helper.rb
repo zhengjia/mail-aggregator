@@ -1,16 +1,13 @@
 $:.unshift File.expand_path('../lib', File.dirname(__FILE__))
 
+RACK_ENV = 'test'
+
 require 'rspec'
 require 'mongoid'
 require 'simplecov'
-
-Mongoid.configure do |config|
-  # TODO modify hard coded db name
-  config.master = Mongo::Connection.new.db("mail_aggregator_test")
-end
+require 'db_connection'
 
 SimpleCov.start
-
 
 RSpec.configure do |config|
   # config.mock_with :rspec
