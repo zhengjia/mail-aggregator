@@ -1,20 +1,52 @@
 require 'mongoid'
-require 'message'
 require 'db_connection'
+require 'email'
+require 'post'
+
+MESSAGE_STATUS = ['new', 'open', 'closed', 'awaiting']
 
 class Aggregator
 
-  include MailLib
-
-  def initialize
-    setup_subjects
+  def initial_sync
+    Mail.all.each do |mail|
+      get_subjects.each do |subject_type|
+        if mail.subject =~ /#{subject_type}/i
+          # store to db
+          Email.store(mail)
+        end # end if mail.subject
+      end # end SUBJECTS.each
+    end
   end
 
+  def resync
+
+  end
+
+  def list
+
+  end
+
+  def hide
+
+  end
+
+  def change_status
+
+  end
+
+  def destroy_email
+
+  end
+
+  def destroy_post
+
+  end
 
 private
 
-  def setup_subjects
-    SUBJECTS = YAML::load File.open(File.expand_path('../subjects.yml', File.dirname(__FILE__) ) )
+  def get_subjects
+    @subjects ||= YAML::load File.open(File.expand_path('../subjects.yml', File.dirname(__FILE__) ) )
   end
+
 
 end

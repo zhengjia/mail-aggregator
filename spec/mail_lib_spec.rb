@@ -3,7 +3,7 @@ require 'mail_lib'
 
 describe MailLib do
 
-  it "sets up retriever_method when the module is included" do
+  it "should set up retriever_method when the module is included" do
     cls = Class.new
     cls.class_eval do
       include MailLib
