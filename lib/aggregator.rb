@@ -13,8 +13,8 @@ class Aggregator
         if mail.subject =~ /#{subject_type}/i
           # store to db
           Email.store(mail)
-        end # end if mail.subject
-      end # end SUBJECTS.each
+        end
+      end
     end
   end
 
