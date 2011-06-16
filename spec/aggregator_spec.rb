@@ -9,21 +9,21 @@ describe Aggregator do
   end
 
   it "should save one mail with one message for initial_sync" do
-    Mail.stub(:all).and_return{ [mail("subject1")] }
+    Mail.stub(:all).and_yield( mail("subject1") )
     @aggregator.initial_sync
     Email.all.count.should == 1
     Post.all.count == 1
   end
 
   it "should not save one mail with one message for initial_sync" do
-    Mail.stub(:all).and_return{ [mail("bad subject")] }
+    Mail.stub(:all).and_yield( mail("bad subject") )
     @aggregator.initial_sync
     Email.all.count.should == 0
     Post.all.count == 0
   end
 
   it "should not save two mail with multiple messages for initial_sync" do
-    Mail.stub(:all).and_return{ [mail("subject1", 3), mail("subject2", 2)] }
+    Mail.stub(:all).and_yield( mail("subject1", 3) ).and_yield( mail("subject2", 2) )
     @aggregator.initial_sync
     Email.all.count.should == 2
     Post.all.count == 5

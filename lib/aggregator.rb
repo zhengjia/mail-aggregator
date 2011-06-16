@@ -8,7 +8,7 @@ MESSAGE_STATUS = ['new', 'open', 'closed', 'awaiting']
 class Aggregator
 
   def initial_sync
-    Mail.all.each do |mail|
+    Mail.all do |mail|
       get_subjects.each do |subject_type|
         if mail.subject =~ /#{subject_type}/i
           # store to db
