@@ -1,5 +1,6 @@
+require 'mongoid'
+
 class Post
-  include Parser
   include Mongoid::Document
   include Mongoid::Timestamps
   field :date, type: Date

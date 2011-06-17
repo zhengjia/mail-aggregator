@@ -5,12 +5,17 @@ require 'email'
 
 class Aggregator
 
-  def sync
-    Mail.find(:what => :last) do |mail|
+  def sync(initial = false)
+    Mail.find(:what => initial ? :first : :last, :count => :all) do |mail|
       get_subjects.each do |subject_type|
-        if mail.subject =~ /#{subject_type}/i
+        begin
+          subject = mail.subject
+        rescue ArgumentError, Encoding::UndefinedConversionError # ArgumentError => undefined encoding
+          subject = ""
+        end
+        if subject =~ /#{subject_type}/i
           if Email.has_message_id?(mail.message_id)
-            return
+            return unless initial
           else
             Email.store(mail)
           end

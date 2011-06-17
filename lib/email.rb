@@ -1,11 +1,14 @@
 require_relative 'load_path'
+require 'mongoid'
 require 'parser'
 require 'mail_lib'
+require 'post'
 
 class Email
   include Mongoid::Document
   include MailLib
   extend Parser
+  field :subject
   field :message_id
   field :date, type: Date
   index :message_id, unique: true
@@ -15,7 +18,7 @@ class Email
   class << self
 
     def store(mail)
-      parent = Email.create(:message_id => mail.message_id, :date => mail.date.to_date)
+      parent = Email.create(:message_id => mail.message_id, :date => mail.date.to_date, :subject => mail.subject)
       self.parse(mail) do |post_array|
         parent.posts << Post.store(post_array)
       end
