@@ -1,5 +1,5 @@
+require_relative 'load_path'
 require 'parser'
-require 'post'
 require 'mail_lib'
 
 class Email

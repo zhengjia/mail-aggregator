@@ -1,3 +1,4 @@
+require_relative 'load_path'
 require 'mongoid'
 require 'db_connection'
 require 'email'

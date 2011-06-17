@@ -1,5 +1,3 @@
-require 'email'
-
 class Post
   include Parser
   include Mongoid::Document
