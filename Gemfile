@@ -5,6 +5,7 @@ gem 'mail'
 gem 'mongoid', :git => 'git://github.com/mongoid/mongoid.git'
 gem 'bson_ext'
 gem 'fabrication'
+gem 'faker'
 
 group :test do
   gem 'rspec'
