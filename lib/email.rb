@@ -2,6 +2,7 @@ require_relative 'load_path'
 require 'mongoid'
 require 'parser'
 require 'mail_lib'
+require 'helper'
 require 'post'
 
 class Email
@@ -18,7 +19,7 @@ class Email
   class << self
 
     def store(mail)
-      parent = Email.create(:message_id => mail.message_id, :date => mail.date.to_date, :subject => mail.subject)
+      parent = Email.create(:message_id => mail.message_id, :date => mail.date.to_date, :subject => Helper.force_encoding(mail.subject) )
       self.parse(mail) do |post_array|
         parent.posts << Post.store(post_array)
       end

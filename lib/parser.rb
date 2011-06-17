@@ -31,7 +31,8 @@ module Parser
 private
 
   def get_textual_body_io
-    StringIO.new(mail.body.parts.first.body.to_s.gsub(/\\x../, " ").split("Create an Account: \nhttps://www.feedmyinbox.com/")[0])
+    body = Helper.force_encoding(mail.body.parts.first.body.to_s)
+    StringIO.new(body.split("Create an Account: \nhttps://www.feedmyinbox.com/")[0])
   end
 
 end
