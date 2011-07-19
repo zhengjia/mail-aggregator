@@ -6,6 +6,9 @@ gem 'mongoid', :git => 'git://github.com/mongoid/mongoid.git'
 gem 'bson_ext'
 gem 'fabrication'
 gem 'faker'
+gem 'sinatra', '1.3.0e'
+gem 'padrino-helpers'
+gem 'rack-flash'
 
 group :test do
   gem 'rspec'

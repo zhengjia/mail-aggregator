@@ -11,7 +11,7 @@ class Post
   field :note
   
   # db.posts.ensureIndex({date:1})
-  index :date, Mongo::ASCEDING
+  index :date# , Mongo::ASCEDING
 
   scope :visible, where(:visible => true)
 
