@@ -11,7 +11,7 @@ Sinatra.register Padrino::Helpers
 use Rack::Flash
 
 get "/" do
-  @posts = Post.visible
+  @posts = Post.visible.order_by([:date, :desc])
   erb :index
 end
 
