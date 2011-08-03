@@ -18,5 +18,6 @@ end
 
 group :development do
   gem 'ruby-debug19'
+  gem 'shotgun'
   gem "awesome_print"
 end
