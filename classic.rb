@@ -28,3 +28,16 @@ post "/mark_hide/:id" do
   flash[:notice] = "Successfully hide post #{@post.subject}. id #{@post.id}"
   redirect "/?page=#{params[:page]}"
 end
+
+post "/update/:id" do
+  @post = Post.find(params[:id])
+  puts params
+  puts params["post"]
+  @post.attributes = params["post"]
+  if @post.save
+    flash[:notice] = "Successfully updated post #{@post.subject}. id #{@post.id}"
+  else
+    flash[:alert] = "Failed to save #{@post.subject}. id #{@post.id}"
+  end
+  redirect "/?page=#{params[:page]}"
+end
