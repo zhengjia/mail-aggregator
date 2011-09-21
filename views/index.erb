@@ -3,7 +3,7 @@
 <% @posts.each do |post| %>
   <div style="padding:20px">
     <%= post.date %>
-    <%= button_to "Hide", "/mark_hide/#{post.id}?page=#{params[:page]}" %>
+    <%= button_to "Hide", "/mark_hide/#{post.id}?page=#{params[:page] || 1}" %>
     <br />
     <%= post.subject %><br />
     <%= post.body %>
